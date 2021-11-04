@@ -1,0 +1,23 @@
+Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of Anka.
+Identifier: improbable.download.Anka
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Anka
+
+Process:
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%.pkg'
+    url: https://veertu.com/downloads/anka-virtualization-latest
+
+- Processor: EndOfCheckPhase
+
+- Processor: CodeSignatureVerifier
+  Arguments:
+    expected_authority_names:
+    - 'Developer ID Installer: Veertu Inc (TT9FAWP6V4)'
+    - Developer ID Certification Authority
+    - Apple Root CA
+    input_path: '%pathname%'

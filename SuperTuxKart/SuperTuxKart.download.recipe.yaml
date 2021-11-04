@@ -1,0 +1,19 @@
+Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of SuperTuxKart.
+Identifier: improbable.download.SuperTuxKart
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: SuperTuxKart
+
+Process:
+- Processor: GitHubReleasesInfoProvider
+  Arguments:
+    asset_regex: .*\.zip$
+    github_repo: supertuxkart/stk-code
+
+- Processor: URLDownloader
+  Arguments:
+    filename: '%NAME%-%version%-mac.zip'
+
+- Processor: EndOfCheckPhase
