@@ -15,7 +15,7 @@ Process:
 
 - Processor: URLTextSearcher
   Arguments:
-    re_pattern: '"download_url":"(https:\/\/.+\.app\.zip\?.+)","install_url":'
+    re_pattern: '"download_url":"(.*)","install_url"'
     result_output_var_name: url
     url: https://install.appcenter.ms/api/v0.1/apps/cloudflare/1.1.1.1-macos-1/distribution_groups/release/releases/%release_id%
 
