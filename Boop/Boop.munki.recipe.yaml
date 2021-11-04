@@ -1,0 +1,28 @@
+Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
+Description: Downloads the latest version of Boop and imports it into Munki.
+Identifier: improbable.munki.Boop
+ParentRecipe: improbable.download.Boop
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Boop
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: A scriptable scratchpad for developers. In slow yet steady progress.
+    developer: Ivan Mathy
+    display_name: Boop
+    name: '%NAME%'
+    unattended_install: true
+
+Process:
+- Processor: DmgCreator
+  Arguments:
+    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%.dmg'
+    dmg_root: '%RECIPE_CACHE_DIR%/%NAME%'
+
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
