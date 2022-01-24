@@ -1,6 +1,6 @@
 Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
 Description: Automates deployment of containerized applications.
-Identifier: improbable.munki.Docker
+Identifier: improbable.munki.DockerUniversal
 ParentRecipe: com.github.moofit-recipes.pkg.DockerUniversal
 MinimumVersion: 1.0.0
 
