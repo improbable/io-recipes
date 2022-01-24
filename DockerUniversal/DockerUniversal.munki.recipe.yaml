@@ -17,12 +17,8 @@ Input:
     unattended_install: true
 
 Process:
-- Processor: DmgCreator
-  Arguments:
-    dmg_path: '%RECIPE_CACHE_DIR%/%NAME%Universal-%version%.dmg'
-    dmg_root: '%RECIPE_CACHE_DIR%/%NAME%'
 
 - Processor: MunkiImporter
   Arguments:
-    pkg_path: '%dmg_path%'
+    pkg_path: '%RECIPE_CACHE_DIR%/%NAME%Universal-%version%.pkg'
     repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
