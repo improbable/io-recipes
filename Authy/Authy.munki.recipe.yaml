@@ -1,0 +1,30 @@
+Comment: Created with Recipe Robot v2.2.0 (https://github.com/homebysix/recipe-robot)
+Description: Automates deployment of containerized applications.
+Identifier: improbable.munki.Authy
+ParentRecipe: com.github.nzmacgeek-recipes.pkg.Authy
+MinimumVersion: 1.0.0
+
+Input:
+  NAME: Authy
+  MUNKI_REPO_SUBDIR: apps/%NAME%
+  pkginfo:
+    catalogs:
+    - testing
+    description: Authy makes it really easy to use Two-Factor Authentication on your online accounts using your smartphone. We provide you an App that makes it easy for you to keep all your tokens and “just” works for a strong authentication.
+    developer: Authy
+    display_name: Authy
+    name: '%NAME%'
+    unattended_install: true
+
+Process:
+
+- Processor: MunkiPkginfoMerger
+  Arguments:
+    additional_pkginfo:
+      version: '%version%'
+
+- Processor: MunkiImporter
+  Arguments:
+    pkg_path: '%dmg_path%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+    version_comparison_key: CFBundleVersion
