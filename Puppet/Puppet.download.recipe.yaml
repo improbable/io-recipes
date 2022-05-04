@@ -12,7 +12,7 @@ Process:
 - Processor: URLDownloader
   Arguments:
     filename: '%NAME%.dmg'
-    url: '%URL%/%OS_VERSION%/%ARCH/puppet-agent-latest.dmg'
+    url: '%URL%/%OS_VERSION%/%ARCH%/puppet-agent-latest.dmg'
 
 - Processor: EndOfCheckPhase
 
