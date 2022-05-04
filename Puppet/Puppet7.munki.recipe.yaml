@@ -1,0 +1,27 @@
+Description: Downloads Puppet7 and imports into Munki.
+Identifier: io.improbable.munki.puppet7
+Input:
+  MUNKI_CATEGORY: Support
+  MUNKI_REPO_SUBDIR: apps/Puppet
+  NAME: Puppet7
+  OS_VERSION: '11'
+  ARCH: 'x86_64' # 'x86_64' or 'arm64'
+  URL: https://downloads.puppetlabs.com/mac/puppet7
+  pkginfo:
+    catalogs:
+    - testing
+    category: '%MUNKI_CATEGORY%'
+    description: Puppet is a configuration management solution that allows you to define the state of your IT infrastructure, and then automatically enforces the desired state.
+    developer: Puppet
+    display_name: Puppet 7
+    maximum_os_version: '%OS_VERSION%.99'
+    minimum_os_version: '%OS_VERSION%.0'
+    name: '%NAME%'
+    unattended_install: true
+MinimumVersion: 0.2.0
+ParentRecipe: improbable.download.puppet
+Process:
+- Arguments:
+    pkg_path: '%pathname%'
+    repo_subdirectory: '%MUNKI_REPO_SUBDIR%'
+  Processor: MunkiImporter
