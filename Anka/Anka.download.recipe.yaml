@@ -5,12 +5,13 @@ MinimumVersion: 1.0.0
 
 Input:
   NAME: Anka
+  PLATFORM_ARCH: 'intel' # 'intel' or 'arm'
 
 Process:
 - Processor: URLDownloader
   Arguments:
     filename: '%NAME%.pkg'
-    url: https://veertu.com/downloads/anka-virtualization-latest
+    url: https://veertu.com/downloads/anka-virtualization-%PLATFORM_ARCH%
 
 - Processor: EndOfCheckPhase
 
